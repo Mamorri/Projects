@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+        <title>Firefly</title>
+<!--<style>
+h1{text-align: left;}
+a{text-decoration:none;}
+a:hover{color:green; text-decoration:underline}
+</style>-->
+
+<!---------------------------------------------------------------0-->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+<link href="stylesheet.css" rel="stylesheet">
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
+  <script type="text/javascript" src="http://qtip2.com/v/stable/jquery.qtip.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://qtip2.com/v/stable/jquery.qtip.css">
+    
+<style type="text/css">
+body {
+padding: 5px;
+}
+
+.tooltip-content {
+    display: inline;
+    position:relative;
+}
+</style>
+
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+// Create the tooltips only when document ready
+$(document).ready(function () {
+    // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
+    $('area[alt]').each(function () {
+        var elem = $(this),
+            map = elem.parent(),
+            image = $('img[usemap="#'+map.attr('name')+'"]');
+        
+        elem.qtip({
+            content: {
+                text: $('#charMap-' + elem.attr('alt')), // Attempt to grab content from #statesMap-<State> elements first
+                attr: 'alt' // No content? Grab the content from the 'alt' attribute
+            },
+            position: {
+                viewport: image
+            },
+            show: {
+                event: 'hover',
+                solo: true
+            },
+            hide: {
+                // Allow the user to hover on the tooltip
+                fixed: true,
+                delay: 200
+            },
+            style: {
+                classes: 'qtip-tipsy'
+            }
+        });
+    });
+});
+});//]]> 
+
+</script>
+
+<!----------------------------------------------------------------------o-->
+</head>
+
+
+<body>
+<div id="wrapper">
+
+<a id="top"></a>
+
+<header>
+
+<h1>GOTHAM'S INFAMOUS</h1>
+<hr />
+
+</header>
+
+<div id="nav" class="container">
+	<ul>
+		<li><a  href="index.html">SLADE</a></li>
+		<li><a  href="Azrael.html">AZRAEL</a></li>
+		<li><a class="current" href="Firefly.html">FIREFLY</a></li>	
+	</ul>
+</div>
+
+
+<main>
+<nav role="navigation">
+  <div id="menuToggle">
+
+    <input type="checkbox" />
+    
+	<span></span>
+	<span></span>   
+
+    <ul id="menu">
+     <a href="#"><h2>Firefly</h2></a>
+<!-- 		<p> My name is character name </p></li>
+      <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+-->
+<li> Identity: Garfield Lynns</li> 
+<li> Lethality: High</li> 
+<li> Notoriety: Low</li> 
+<li> Volatility: Very High</li> 
+<li> Location: Unkown</li> 
+<li> Bio: </li> 
+<p> A pyromaniac who began as a regular petty criminal since his career as a pyrotechnic expert for movies failed. After setting alight a chemical factory, he was horribly scarred all over his body. Upon recovery he made a special flame-retardent battlesuit along with matching weaponry. He works as a freelance mercenary and professional arsonist between bouts of incarceration at Blackgate Penitentiary. </p>
+    </ul>
+  </div>
+</nav>
+
+<div id="firefly-imagemap">
+
+    <img width="1582" height="890" border="0" usemap="#charMap" alt="firefly" src="firefly.jpg" />
+    <map id="charMap" name="charMap">
+    <area target="" alt="flamer" title="flamer" href="" coords="1070,713,1245,841,1199,753,1077,655,1113,599,996,463,951,412,912,434,851,378,824,375,778,307,760,319,740,381,765,431,828,501,845,542,890,570,930,588,974,621,982,646" shape="poly">
+    <area target="" alt="flashlight" title="flashlight" href="" coords="947,235,918,218,897,243,901,265,932,279,948,263" shape="poly">
+    <area target="" alt="headgear" title="headgear" href="" coords="849,113,825,112,823,143,805,169,781,184,786,214,795,232,827,270,851,271,869,247,891,215,893,190,881,169,859,154,848,131" shape="poly">
+    <area target="" alt="wingleft" title="wingleft" href="" coords="735,158,713,55,682,22,574,13,514,17,478,48,430,89,390,132,359,167,349,220,338,240,531,206,527,241,532,255,559,267,588,267,626,204,648,222,682,192,697,201,748,189" shape="poly">
+    <area target="" alt="wingright" title="wingright" href="" coords="937,142,965,79,1024,72,1090,75,1116,108,1228,119,1298,158,1343,228,1382,266,1396,287,1372,346,1380,378,1329,413,1119,291,1080,294,1067,253,1049,225,1031,248,1024,260,1000,248,979,239,965,220,940,206,922,202" shape="poly">
+    <area target="" alt="fireleft" title="fireleft" href="" coords="645,226,634,307,616,377,612,437,605,487,580,540,571,557,564,602,543,591,536,511,540,434,577,285,624,205" shape="poly">
+    <area target="" alt="fireright" title="fireright" href="" coords="1017,260,1020,355,1032,415,1046,510,1057,535,1085,561,1095,512,1088,392,1081,307,1071,265,1049,227" shape="poly">
+    </map>
+
+    <div id="charMap-flamer" class="tooltip-content">
+       <a href="Firefly.html"> Devastating flamethrower capable of mass inerfal terror </a>
+    </div>
+
+    <div id="charMap-flashlight" class="tooltip-content">
+       <a href="Firefly.html"> Flashlight...in case the fire isn't bright enough... </a>
+    </div>
+
+    <div id="charMap-headgear" class="tooltip-content">
+       <a href="Firefly.html"> Specialized headgear for flight and chaos </a>
+    </div>
+
+    <div id="charMap-wingleft" class="tooltip-content">
+       <a href="Firefly.html"> Thruster, granting swift flight </a>
+    </div>
+
+    <div id="charMap-wingright" class="tooltip-content">
+       <a href="Firefly.html"> Thruster, granting swift flight </a>
+    </div>
+
+    <div id="charMap-fireleft" class="tooltip-content">
+       <a href="Firefly.html"> oooo fire....pretty </a>
+    </div>
+
+    <div id="charMap-fireright" class="tooltip-content">
+       <a href="Firefly.html"> oooo fire....pretty </a>
+    </div>
+</div>
+
+<div id="strip"></div>
+
+
+</main>
+
+
+</div>
+</body>
+</html>

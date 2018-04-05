@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+        <title>Batman</title>
+<!--<style>
+h1{text-align: left;}
+a{text-decoration:none;}
+a:hover{color:green; text-decoration:underline}
+</style>-->
+<!---------------------------------------------------------------0-->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+<link href="stylesheet.css" rel="stylesheet">
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
+  <script type="text/javascript" src="http://qtip2.com/v/stable/jquery.qtip.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://qtip2.com/v/stable/jquery.qtip.css">
+    
+<style type="text/css">
+body {
+padding: 5px;
+}
+
+.tooltip-content {
+    display: inline;
+    position:relative;
+}
+</style>
+
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+// Create the tooltips only when document ready
+$(document).ready(function () {
+    // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
+    $('area[alt]').each(function () {
+        var elem = $(this),
+            map = elem.parent(),
+            image = $('img[usemap="#'+map.attr('name')+'"]');
+        
+        elem.qtip({
+            content: {
+                text: $('#charMap-' + elem.attr('alt')), // Attempt to grab content from #statesMap-<State> elements first
+                attr: 'alt' // No content? Grab the content from the 'alt' attribute
+            },
+            position: {
+                viewport: image
+            },
+            show: {
+                event: 'hover',
+                solo: true
+            },
+            hide: {
+                // Allow the user to hover on the tooltip
+                fixed: true,
+                delay: 200
+            },
+            style: {
+                classes: 'qtip-tipsy'
+            }
+        });
+    });
+});
+});//]]> 
+
+</script>
+
+<!----------------------------------------------------------------------o-->
+</head>
+
+
+<body>
+<div id="wrapper">
+
+<a id="top"></a>
+
+<header>
+
+<h1>GOTHAM'S INFAMOUS</h1>
+<hr />
+
+</header>
+
+<div id="nav" class="container">
+	<ul>
+		<li><a class="current" href="index.html">DEATHSTROKE</a></li>
+		<li><a href="Azrael.html">AZRAEL</a></li>
+		<li><a href="Firefly.html">FIREFLY</a></li>	
+	</ul>
+</div>
+
+
+<main>
+<nav role="navigation">
+  <div id="menuToggle">
+
+    <input type="checkbox" />
+    
+	<span></span>
+	<span></span>   
+
+    <ul id="menu">
+     <a href="#"><h2>Deathstroke</h2></a>
+<!-- 		<p> My name is character name </p></li>
+      <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+-->
+<li> Identity: Slade Wilson</li> 
+<li> Alias: </li> 
+<li> Lethality: High</li> 
+<li> Notoriety: Medium</li> 
+<li> Volatility: Low</li> 
+<li> Location: Unkown</li> 
+<li> Bio: </li> 
+<p> Possesses enhanced strength, speed, agility, and durability granted by an experimental serum. Also possesses a healing factor in his blood that enables him to recover from physical injury much faster than a normal person; however, it does have limitations, as it could not heal his missing eye and cannot regenerate entire limbs.</p>
+    </ul>
+  </div>
+</nav>
+
+<div id="deathstroke"></div>
+
+
+
+</main>
+
+<footer>
+<a href="mailto:w1405909@apps.losrios.com?subject=hello%20web">w1405909@apps.losrios.com</a>
+<br>
+<a href="index.html">Homepage</a>
+<br>
+<a href="http://power.arc.losrios.edu/">Power Server</a>
+<br>
+<p>This page was last updated on:  1031/17.</p>
+</footer>
+
+</div>
+</body>
+</html>

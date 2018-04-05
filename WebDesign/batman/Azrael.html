@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+        <title>Azrael</title>
+<!--<style>
+h1{text-align: left;}
+a{text-decoration:none;}
+a:hover{color:green; text-decoration:underline}
+</style>-->
+
+<!---------------------------------------------------------------0-->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+<link href="stylesheet.css" rel="stylesheet">
+
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
+  <script type="text/javascript" src="http://qtip2.com/v/stable/jquery.qtip.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="http://qtip2.com/v/stable/jquery.qtip.css">
+    
+<style type="text/css">
+body {
+padding: 5px;
+}
+
+.tooltip-content {
+    display: inline;
+    position:relative;
+}
+</style>
+
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+// Create the tooltips only when document ready
+$(document).ready(function () {
+    // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
+    $('area[alt]').each(function () {
+        var elem = $(this),
+            map = elem.parent(),
+            image = $('img[usemap="#'+map.attr('name')+'"]');
+        
+        elem.qtip({
+            content: {
+                text: $('#charMap-' + elem.attr('alt')), // Attempt to grab content from #statesMap-<State> elements first
+                attr: 'alt' // No content? Grab the content from the 'alt' attribute
+            },
+            position: {
+                viewport: image
+            },
+            show: {
+                event: 'hover',
+                solo: true
+            },
+            hide: {
+                // Allow the user to hover on the tooltip
+                fixed: true,
+                delay: 200
+            },
+            style: {
+                classes: 'qtip-tipsy'
+            }
+        });
+    });
+});
+});//]]> 
+
+</script>
+
+<!----------------------------------------------------------------------o-->
+</head>
+
+
+<body>
+<div id="wrapper">
+
+<a id="top"></a>
+
+<header>
+
+<h1>GOTHAM'S INFAMOUS</h1>
+<hr />
+
+</header>
+
+<div id="nav" class="container">
+	<ul>
+		<li><a  href="index.html">SLADE</a></li>
+		<li><a class="current" href="Azrael.html">AZRAEL</a></li>
+		<li><a  href="Firefly.html">FIREFLY</a></li>	
+	</ul>
+</div>
+
+
+<main>
+<nav role="navigation">
+  <div id="menuToggle">
+
+    <input type="checkbox" />
+    
+	<span></span>
+	<span></span>   
+
+    <ul id="menu">
+     <a href="#"><h2>Azrael</h2></a>
+<!-- 		<p> My name is character name </p></li>
+      <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+-->
+<li> Identity: Jean-Paul Valley</li> 
+<li> Alias: "Help from God"  </li> 
+<li> Lethality: Medium</li> 
+<li> Notoriety: Low</li> 
+<li> Volatility: Low</li> 
+<li> Location: Gotham City</li> 
+<li> Bio: </li> 
+<p> Member of a group of assassins created by The Sacred Order of Saint Dumas. A superior fighter; although he lacks technique and style in his fighting moves, he makes up for it with his inhuman speed, reflexes, and agility. Able to match Deathstroke in a sword duel and has even defeated Batman in hand-to-hand combat. This is not only due to his martial arts skills, but also due to his inhuman physical abilities.</p>
+    </ul>
+  </div>
+</nav>
+
+<div id="azrael-imagemap">
+	<img width="1582" height="890" border="0" usemap="#charMap" alt="azrael" src="azrael.jpg" />
+    <map id="charMap" name="charMap">
+    <area target="" alt="sword" title="sword" href="" coords="692,681,696,887,744,887,748,716,766,703,756,682,739,441,719,426,696,443,707,469" shape="poly">
+    <area target="" alt="hilt" title="hilt" href="" coords="805,683,766,682,697,681,630,671,604,660,636,640,695,647,732,660,788,658,806,655,834,665" shape="poly">
+    <area target="" alt="emblem" title="emblem" href="" coords="749,555,773,565,805,537,855,478,854,408,832,369,847,281,763,302,723,298,699,274,692,305,675,336,655,397,651,435,678,464,693,467,697,443,720,425,737,439,748,463,762,477,767,495,749,510" shape="poly">
+    <area target="" alt="armright" title="armright" href="" coords="664,573,618,551,580,544,555,513,535,485,513,453,538,464,549,450,600,453,628,467,657,495,672,505,678,507" shape="poly">
+    <area target="" alt="armleft" title="armleft" href="" coords="936,546,904,567,871,583,846,600,837,616,805,632,783,635,776,622,769,600,760,579,785,556,840,503,893,465,927,456,934,453,948,499,964,502,964,524" shape="poly">
+    <area target="" alt="cowl" title="cowl" href="" coords="821,283,848,271,861,244,858,205,835,184,827,158,812,118,785,100,750,96,719,111,694,142,689,190,690,271,698,282,714,200,745,253,773,204,798,240" shape="poly">
+    <area target="" alt="cape" title="cape" href="" coords="1182,575,1154,571,1094,533,1017,462,992,392,988,376,958,261,1013,322,1094,390,1161,423,1190,443,1169,445,1069,409,1009,369,1014,401,1097,464,1164,487,1206,490" shape="poly">
+    <area target="" alt="idk" title="idk" href="" coords="914,641,953,623,947,582,939,545,903,568,903,601" shape="poly">
+    </map>
+
+    <div id="charMap-sword" class="tooltip-content">
+       <a href="Azrael.html"> Its a super sacred sword </a>
+    </div>
+
+    <div id="charMap-hilt" class="tooltip-content">
+       <a href="Azrael.html"> A spiked hilt for style </a>
+    </div>
+
+    <div id="charMap-emblem" class="tooltip-content">
+       <a href="Azrael.html"> Emblem of The Sacred Order of Saint Dumas </a>
+    </div>
+
+    <div id="charMap-armright" class="tooltip-content">
+       <a href="Azrael.html"> Bladed armguard </a>
+    </div>
+
+    <div id="charMap-armleft" class="tooltip-content">
+       <a href="Azrael.html"> Bladed armguard </a>
+    </div>
+
+    <div id="charMap-cape" class="tooltip-content">
+       <a href="Azrael.html"> A split cape of 9 ribbons </a>
+    </div>
+
+    <div id="charMap-cowl" class="tooltip-content">
+       <a href="Azrael.html"> Tradition cowl for anonymity </a>
+    </div>
+
+    <div id="charMap-idk" class="tooltip-content">
+       <a href="Azrael.html"> something relevant I think </a>
+    </div>
+
+</div>
+
+
+<div id="strip"></div>
+
+</main>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+        <title>Batman</title>
+
+
+<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+<link href="stylesheet.css" rel="stylesheet">
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
+  <script type="text/javascript" src="http://qtip2.com/v/stable/jquery.qtip.js"></script>
+    <link rel="stylesheet" type="text/css" href="QTIP.css">
+
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+
+    
+<style type="text/css">
+body {
+padding: 5px;
+}
+
+.tooltip-content {
+    display: inline;
+    position:relative;
+}
+</style>
+
+
+<script type='text/javascript'>//<![CDATA[
+$(window).load(function(){
+// Create the tooltips only when document ready
+$(document).ready(function () {
+    // MAKE SURE YOUR SELECTOR MATCHES SOMETHING IN YOUR HTML!!!
+    $('area[alt]').each(function () {
+        var elem = $(this),
+            map = elem.parent(),
+            image = $('img[usemap="#'+map.attr('name')+'"]');
+        
+        elem.qtip({
+            content: {
+                text: $('#charMap-' + elem.attr('alt')), // Attempt to grab content from #statesMap-<State> elements first
+                attr: 'alt' // No content? Grab the content from the 'alt' attribute
+            },
+            position: {
+                viewport: image
+            },
+            show: {
+                event: 'hover',
+                solo: true
+            },
+            hide: {
+                // Allow the user to hover on the tooltip
+                fixed: true,
+                delay: 200
+            },
+            style: {
+                classes: 'qtip-tipsy'
+            }
+        });
+    });
+});
+});//]]> 
+
+</script>
+
+<!----------------------------------------------------------------------o-->
+</head>
+
+
+<body>
+<div id="wrapper">
+
+<a id="top"></a>
+
+<header>
+
+<h1>GOTHAM'S INFAMOUS</h1>
+<hr />
+
+</header>
+
+<div id="nav" class="container">
+	<ul>
+		<li><a class="current" href="index.html">SLADE</a></li>
+		<li><a href="Azrael.html">AZRAEL</a></li>
+		<li><a href="Firefly.html">FIREFLY</a></li>	
+	</ul>
+</div>
+
+
+<main>
+<nav role="navigation">
+  <div id="menuToggle">
+
+    <input type="checkbox" />
+    
+	<span></span>
+	<span></span>   
+
+    <ul id="menu">
+     <a href="#"><h2>Deathstroke</h2></a>
+<!-- 		<p> My name is character name </p></li>
+      <a href="https://erikterwan.com/" target="_blank"><li>Show me more</li></a>
+-->
+<li> Identity: Slade Wilson</li> 
+<li> Alias: </li> 
+<li> Lethality: High</li> 
+<li> Notoriety: Medium</li> 
+<li> Volatility: Low</li> 
+<li> Location: Unkown</li> 
+<li> Bio: </li> 
+<p> Possesses enhanced strength, speed, agility, and durability granted by an experimental serum. Also possesses a healing factor in his blood that enables him to recover from physical injury much faster than a normal person; however, it does have limitations, as it could not heal his missing eye and cannot regenerate entire limbs.</p>
+    </ul>
+  </div>
+</nav>
+
+ <div id="demo-imagemap">
+
+    <img width="1582" height="890" border="0" usemap="#charMap" outline: none; alt="deathstroke" src="deathstroke.jpg" />
+    <map id="charMap" name="charMap" outline: none;>
+    <area target="" alt="sword" title="sword" href="" coords="310,754,261,754,726,495,718,525" shape="poly">
+    <area target="" alt="pouches" title="pouches" href="" coords="799,362,849,285,792,186,765,182,720,251,737,286,768,334" shape="poly">
+    <area target="" alt="radio" title="radio" href="" coords="986,569,1006,576,1032,668,996,701,987,704,940,581,972,550" shape="poly">
+    <area target="" alt="grenade" title="grenade" href="" coords="973,517,1003,504,1001,478,990,457,978,442,944,460,952,490" shape="poly">
+    <area target="" alt="shells" title="shells" href="" coords="1014,229,1085,205,1079,185,1054,157,986,178" shape="poly">
+    <area target="" alt="helmet" title="helmet" href="" coords="887,180,933,138,947,75,926,25,905,16,852,22,832,40,825,75,831,124,850,159,870,176" shape="poly">
+    <area target="" alt="belt" title="belt" href="" coords="748,514,779,544,894,532,943,511,958,509,933,464,828,471,754,465,743,497" shape="poly">
+    <area target="" alt="idk" title="idk" href="" coords="1085,242,1103,263,1109,286,1078,305,1046,316,1026,284,1029,263" shape="poly">
+    </map>
+  
+    <div id="charMap-sword" class="tooltip-content">
+       <a href="index.html">It's a super cool sword</a>
+    </div>
+	
+    <div id="charMap-pouches" class="tooltip-content">
+        <a href="index.html">dope-ass pouch</a>
+    </div>
+    
+    <div id="charMap-radio" class="tooltip-content">
+        <a href="index.html">cool radio</a>
+    </div>
+
+    <div id="charMap-grenade" class="tooltip-content">
+        <a href="index.html"> ...boom</a>
+    </div>
+
+    <div id="charMap-shells" class="tooltip-content">
+        <a href="index.html"> Can't always rely on the sword...</a>
+    </div>
+
+    <div id="charMap-helmet" class="tooltip-content">
+        <a href="index.html"> Signature helmet after the loss of his right eye.</a>
+    </div>
+
+    <div id="charMap-belt" class="tooltip-content">
+        <a href="index.html"> A belt...of...utility</a>
+    </div>
+
+    <div id="charMap-idk" class="tooltip-content">
+        <a href="index.html"> idk what this is</a>
+    </div>
+
+</div>
+
+
+<div id="strip"></div>
+
+
+</main>
+
+
+</div>
+
+<script>
+  // tell the embed parent frame the height of the content
+  if (window.parent && window.parent.parent){
+    window.parent.parent.postMessage(["resultsFrame", {
+      height: document.body.getBoundingClientRect().height,
+      slug: "None"
+    }], "*")
+  }
+</script>
+
+</body>
+</html>

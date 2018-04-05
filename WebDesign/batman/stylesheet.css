@@ -1,0 +1,498 @@
+
+.hebrew {
+    direction: rtl;
+}
+
+/*
+@font-face {
+ font-family: 'justice-league';
+ src: url(justice-league.TTF);
+}
+*/
+
+body
+{
+//background-color:#1b0c03;
+background-image: url("back22.jpg");
+margin-left: 26px;
+
+}
+
+
+
+#wrapper {
+//border: thin solid #036;
+width: 1580px;
+text-align:left;
+//background-color: #27232b;
+margin: 0px auto;
+}
+
+header {
+background-color:#080602;
+padding-top: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+text-align: center;
+border: 2px solid #ef473a;
+border-radius: 5px;
+}
+
+header h1 {
+text-align: center;
+font-family: 'Poiret One', cursive;
+font-weight: bold;
+font-size: 94px;
+}
+
+nav {
+//background-color: #210920;
+padding: 0px;
+text-align: center;
+//opacity: 0;
+}
+
+nav h2 {
+  padding: 0px;
+  font-size: 32px;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+}
+
+
+
+
+
+.container{
+	//padding: 10px 0px 10px 0px;
+	width: 1200px;
+	margin: 0px auto;
+	
+}
+
+
+#nav ul{
+	margin: 0;
+	padding: 30px 0px 10px 0px;
+	list-style: none;
+	line-height: normal;
+	text-align: center;
+	//padding: 0px 50px;
+}
+	
+#nav li{
+	display: inline-block;
+}
+	
+#nav a{
+	//display: block;
+	padding: 5px 50px;
+	letter-spacing: 2px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1.7em;
+	font-weight: 700;
+	color: #FFF;
+	font-family: 'Poiret One', cursive;
+	font-weight: bold;
+	//
+}
+	
+#nav a:hover{
+	text-decoration: none;
+	color: #ef473a;
+}
+
+#nav .current{
+	color: #ef473a;
+	background-image: url("symbol2.png");
+	background-repeat: no-repeat;
+	background-size: 90%;
+	//width: 50px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+aside {
+background-color: #090638;
+float: left;
+width: 195px;
+padding-top: 15px;
+padding-right: 10px;
+padding-bottom: 500px;
+padding-left: 20px;
+clear: both;
+}
+
+main {
+margin-top: 0px;
+margin-right: 0px;
+margin-bottom: 0px;
+margin-left: 225px;
+padding-top: 0px;
+padding-right: 20px;
+padding-bottom: 0px;
+padding-left: 20px;
+
+}
+
+footer {
+background-color: #231807;
+padding-top: 0px;
+padding-right: 10px;
+padding-bottom: 0px;
+padding-left: 20px;
+clear: both;
+z-index: 5;
+}
+
+
+
+
+h1 {
+	text-align: left;
+	color:#ffd6bf;
+	font-family: "Century Gothic";
+	font-size: 54px;
+	
+	font-variant: normal;
+
+	line-height: 26.4px;
+}
+
+
+h2 {
+	color:#870734;
+	font-family: "Century Gothic";
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+}
+
+p {
+	color:#ef473a;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+}
+
+hr {
+    color: white;
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, #1b0c03 , #ef473a , #1b0c03);   
+ 
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {	text-decoration:none;
+	color: #ef473a;
+	font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+	transition: color 0.3s ease;
+}
+
+a:hover
+{
+  color: #870734;
+}
+
+a:visited
+{
+color:purple;
+}
+
+//Burger Menu stuff----------------------------------------------------------------------------------
+#menuToggle
+{
+  display: block;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+
+  z-index: 3;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 80px;
+  height: 38px;
+  position: absolute;
+  top: 263px;
+  left: 202px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 4; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 80px;
+  height: 33px;
+  margin-bottom: 5px;
+  position: absolute;
+	background-image: url("symbol2.png");
+	background-repeat: no-repeat;
+	background-size: 100%;
+  top: 283px;
+  left: 202px;
+
+  //background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 3;
+  
+ // transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+
+
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(360deg) translate(-2px, -1px);
+  //background: #27232b;
+  //background-image: url("symbol2.png");
+
+}
+
+
+#menu
+{
+  position: absolute;
+  width: 357px;
+  height: 585px;
+  margin: -100px 0 0 -50px;
+  padding: 5px;
+  padding-top: 75px;
+
+  z-index: 2;	
+  top: 354px;
+  left: 224px;
+  
+  border: 2px solid #ef473a;
+  border-radius: 5px;
+
+
+
+  background: #080602;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-250%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 5px 0;
+  font-size: 25px;
+  text-align: left;
+  font-family: 'Poiret One', cursive;
+  //font-weight: bold;
+  color: white;
+}
+
+#menu p
+{
+  padding: 0px 0;
+  text-align: left;
+  font-size: 16px;
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  //font-weight: bold;
+}
+
+#menu h2
+{
+  //padding: 10px 0;
+  font-size: 32px;
+  font-family: 'Poiret One', cursive;
+  font-weight: bold;
+}
+
+
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+
+
+
+
+
+
+#deathstroke{
+	background-image: url("deathstroke.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height:890px;
+	width:1582px;
+	position:absolute;
+	top:253px;
+	left:172px;
+	z-index: 1;
+	//opacity: 0;
+
+	padding-top: 0px;
+padding-right: 0px;
+padding-bottom: 0px;
+padding-left: 0px;
+}
+
+#firefly{
+	background-image: url("firefly.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height:890px;
+	width:1582px;
+	position:absolute;
+	top:253px;
+	left:172px;
+	z-index: 1;
+	//opacity: 0;
+}
+
+#azrael{
+	background-image: url("azrael.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height:890px;
+	width:1582px;
+	position:absolute;
+	top:253px;
+	left:172px;
+	z-index: 1;
+	//opacity: 0;
+}
+
+
+
+
+#demo-imagemap{
+//	background-image: url("deathstroke.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height:890px;
+	width:1582px;
+	position:absolute;
+	top:253px;
+	left:172px;
+	z-index: 1;
+	//opacity: 0;
+	outline: 0;
+border: 0;
+}
+
+#azrael-imagemap{
+//	background-image: url("azrael.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height:890px;
+	width:1582px;
+	position:absolute;
+	top:253px;
+	left:172px;
+	z-index: 1;
+	//opacity: 0;
+}
+
+#firefly-imagemap{
+//	background-image: url("firefly.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height:890px;
+	width:1582px;
+	position:absolute;
+	top:253px;
+	left:172px;
+	z-index: 1;
+	//opacity: 0;
+}
+
+.tooltip-content a{
+text-decoration:bold;
+//display: none;
+font-size: 18px;
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+color:white;
+
+}
+
+.tooltip-content a:visited{color:white; text-decoration:bold}
+
+
+#strip{
+	background-image: url("strip.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	height:185px;
+	width:1582px;
+	position:absolute;
+	top:1149px;
+	left:172px;
+	z-index: 5;
+	//opacity: 0;
+}
+
+input {
+    outline: 0;
+}
+
+input:hover, input:active, input:focus {
+    outline: 0;
+}
+
+area:focus {
+outline:0;
+}
