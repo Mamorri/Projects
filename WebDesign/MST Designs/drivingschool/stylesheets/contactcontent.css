@@ -1,0 +1,61 @@
+legend{
+	font-family: Lobster;
+}
+
+#messagebox{
+	position:relative;
+	width:740px;
+	float:left;
+	font-family: Lobster;
+}
+
+#name, #email, #phone, #message, #submit{
+	color: lightcoral;
+	font-weight:bold;
+	font-size: 16px;
+	border:none;
+}
+
+#message{
+}
+
+#submit{
+	position: relative;
+	float:left;
+	top:-10px;
+	height:40px;
+	width:60px;
+    	background: #4B99AD;
+    	border: none;
+    	color: #fff;
+}
+
+#submit:hover{
+	position: relative;
+	float:left;
+	top:-10px;
+	height:40px;
+	width:60px;
+    	background: #4691A4;
+    	box-shadow:none;
+    	-moz-box-shadow:none;
+    	-webkit-box-shadow:none;
+}
+
+#info{
+	position:relative;
+	width: 250px;
+	float:right;
+	
+	font-family: Lobster;
+	font-size:20px;
+}
+
+#map{
+}
+
+#googleMap{
+	height:500px;
+	position:relative;
+	width:1100px;
+}

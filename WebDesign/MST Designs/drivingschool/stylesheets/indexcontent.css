@@ -1,0 +1,79 @@
+#formwrap2{
+	background-color: #ded6d4;
+	box-shadow: 10px 10px 5px #888888;
+	width: 550px;
+	padding:20px;
+}
+
+#slideshow {
+	position:relative;
+  overflow: hidden;
+  height: 334px;
+  width: 580px;
+  margin: 0 auto;
+}
+
+.slide-wrapper {
+  width: 2912px;
+  -webkit-animation: slide 18s ease infinite;
+}
+
+.slide {
+  float: left;
+  height: 450px;
+  width: 580px;
+}
+
+@-webkit-keyframes slide {
+  20% {margin-left: 0px;}
+  30% {margin-left: -580px;}
+  50% {margin-left: -580px;}
+  60% {margin-left: -1160px;}
+  70% {margin-left: -1160px;}
+  80% {margin-left: -1740px;}
+  90% {margin-left: -1740px;}
+}
+
+#sidebar{
+	position:relative;
+	float: right;
+	width: 588px;
+	top: 63px;
+}
+
+#content{
+	float: left;
+	width: 588px;
+}
+
+#content .title{
+	padding-bottom: 2em;
+	text-align: left;
+}
+
+#content h2{
+	font-size: 2em;
+}
+
+#content .byline{
+	padding-top: 0;
+	font-size: 1.5em;
+}
+
+.title{
+	text-align: center;
+}
+
+.title h2{
+	letter-spacing: 0.10em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #3f3f3f;
+}
+
+.title .byline{
+	display: block;
+	padding-top: 1em;
+	font-weight: 300;
+	font-size: 1.1em;
+}

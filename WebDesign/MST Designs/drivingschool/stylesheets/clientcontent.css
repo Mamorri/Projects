@@ -1,0 +1,35 @@
+.chip {
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+
+.chip img {
+    float: left;
+    margin: 0 10px 0 -25px;
+    height: 50px; 
+    width: 50px;
+    border-radius: 50%;
+} 
+
+.column {
+    float: left;
+	width: 33.33%;
+	max-width:350px;
+	margin-bottom: 16px;
+  	padding: 0px 8px;
+}
+ 
+.container {
+  	padding: 0 16px;
+}
+
+.container::after, .row::after {
+  	content: "";
+  	clear: both;
+  	display: table;
+}

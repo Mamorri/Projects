@@ -1,0 +1,178 @@
+html, body{
+	height: 100%;
+}
+	
+body{
+	margin: 0px;
+	padding: 0px;
+	background: #F6F4F3;
+	font-family: 'Raleway', sans-serif;
+	font-size: 12pt;
+	font-weight: 400;
+	color: #4E4D4D;
+}
+	
+	
+h1, h2, h3{
+	margin: 0;
+	padding: 0;
+}
+	
+ol, ul{
+	padding: 0;
+	list-style: none;
+}
+	
+p {
+	line-height: 180%;
+	font-size: 12pt;
+	font-weight: 400;
+	color: #4E4D4D;
+}
+
+a{
+	color: #383838;
+}
+	
+a:hover{
+	text-decoration: none;
+}
+	
+.container{
+	width: 1200px;
+	margin: 0px auto;
+}
+
+#header{
+	background: #2D2933;
+	position:fixed;
+	top:0;
+	width:100%;
+	z-index:999;
+}	
+
+#nav ul{
+	margin: 0;
+	padding: 10px 0px 10px 0px;
+	list-style: none;
+	line-height: normal;
+	text-align: center;
+}
+	
+#nav li{
+	display: inline-block;
+}
+	
+#nav a{
+	display: block;
+	padding: 20px;
+	letter-spacing: 1px;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 1em;
+	font-weight: 700;
+	color: #FFF;
+}
+	
+#nav a:hover{
+	text-decoration: none;
+	color: #e83c3c;
+}
+
+#nav a:active{
+	background-color:antiquewhite;
+	color: #e83c3c;
+}
+
+#nav .current{
+	background-color:lightcoral;
+}
+
+#logo{
+	padding: 4em 0em;
+	text-transform: uppercase;
+	position:relative;
+	top:40px;
+}
+
+#logo h1{
+	text-align: center;
+	font-weight: 900;
+	font-size: 2.5em;
+}
+
+#logo span{
+	padding: 0em 0em 0em 0.5em;
+	position:relative;
+	top:-40px;
+}
+	
+#logo a {
+	color: #3f3f3f;
+	text-decoration:none;
+}
+
+#copyright{
+	overflow: hidden;
+	padding: 1em 0em;
+	background-color:#2D2933;
+	position:relative;
+	top:81px;
+}
+	
+#copyright p{
+	letter-spacing: 0.20em;
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 0.80em;
+	color: #6F6F6F;
+}
+	
+#copyright a{
+	text-decoration: none;
+	color: #8C8C8C;
+}
+
+#formwrap{
+	float: left;
+	background-color: #ded6d4;
+	box-shadow: 10px 10px 5px #888888;
+	width: 1160px;
+	padding:20px;
+}
+
+#content{
+	float: left;
+}
+	
+#content .title{
+	padding-bottom: 2em;
+	text-align: left;
+}
+
+#content h2{
+	font-size: 2em;
+}
+	
+#content .byline{
+	padding-top: 0;
+	font-size: 1.5em;
+}
+ 
+.title{
+	text-align: center;
+}
+	
+.title h2{
+	letter-spacing: 0.10em;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #3f3f3f;
+}
+
+.title .byline{
+	display: block;
+	padding-top: 1em;
+	font-weight: 300;
+	font-size: 1.1em;
+}

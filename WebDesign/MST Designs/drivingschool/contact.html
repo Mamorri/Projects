@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Accident Prone Driving School</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="stylesheets/layout.css?v={random number/string}">
+	<link rel="stylesheet" href="stylesheets/contactcontent.css?v={random number/string}">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+</head><!-- End head -->
+
+<body>
+
+<div id="header">
+	<div id="nav" class="container">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="about.html">About Us</a></li>
+			<li><a href="FAQ.html">FAQs</a></li>
+			<li><a href="clients.html">Clients</a></li>
+			<li><a href="testimonials.html">Testimonials</a></li>
+			<li><a href="registration.html">Registration</a></li>
+			<li><a class="current" href="contact.html">Contact</a></li>
+		</ul>
+	</div>
+</div>
+
+<div id="logo" class="container">
+	<h1><img src="images/wheel.png" height="100" width="100"><a href="index.html"><span>Accident Prone DRIVING SCHOOL</span></a></h1>
+</div>
+
+<div id="page" class="container">
+	<div id="content">
+		<div class="title">
+			<h2>CONTACT</h2>
+		</div>
+<div id="formwrap">
+<p>
+	<h3>Message Us</h3><br>
+		<div id="messagebox">
+			<form method="post"  autocomplete="off" action="">
+					We are here to answer any questions you may have with our school.<br>
+					Reach out to us and we will respond as soon as we can.<br>
+					Or you can start registering now! <a href="registration.html">Click here to register!</a>
+					<p>
+					<input id="name" type="text" name="firstname" placeholder="Name">
+					<input id="phone" type="tel" name="phone" placeholder="205-272-7463" pattern="\d{3}[\-]\d{3}[\-]\d{4}"> </p>
+						<textarea id="message" rows="20" cols="80" placeholder="Send Us A Message!"></textarea><br><br> 
+						<input id="submit" type="submit" value="Send">
+				</form>
+		</div> <!-- End of messagebox -->
+		<div id="info">
+				<h3>EMAIL</h3>
+				crash@ap.com<br><br><br><br>
+
+				<h3>PHONE</h3>
+				205-272-7463<br><br><br><br>
+
+				<h3>ADDRESS</h3>
+				A.P. Driving School<br>
+				2630 Cahaba Rd<br>
+				Birmingham, AL 35223<br><br>
+		</div><!-- End of info-->
+		<br> 
+			<div id="googleMap"></div>
+			<script>
+			function myMap() {
+				var mapProp= {
+    		center:new google.maps.LatLng(33.486733,-86.778947),
+    		zoom:17,
+		disableDefaultUI: true,
+          styles: [
+            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#263c3f'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#6b9a76'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#38414e'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#212a37'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#9ca5b3'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#746855'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#1f2835'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#f3d19c'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#2f3948'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#17263c'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
+            }
+          ]
+			};
+
+			var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+			}
+			</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPN5Nzx2CciNBT6rrsY7QbTpLKmAPTv-k&callback=myMap"></script></div>
+		</p>
+	</div> 
+<div id="copyright" class="container">
+	<p>&copy; A.P. Driving School. All rights reserved. | 205-272-7463 | <a href="mailto:crash@ap.com">crash@ap.com</a>. Designed by: <a href="http://power.arc.losrios.edu/~lgroup1/cisw300/">MST Designs</a></p>
+</div>
+</body><!-- End body -->
+</html><!-- End html -->
