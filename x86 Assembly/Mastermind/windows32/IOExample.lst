@@ -1,0 +1,363 @@
+Microsoft (R) Macro Assembler Version 12.00.21005.1	    12/05/16 22:15:52
+IOExample.asm						     Page 1 - 1
+
+
+				.586
+				.MODEL FLAT
+				INCLUDE io.h            ; header file for input/output
+			      C ; IO.H -- header file for I/O macros (listing suppressed)
+			      C .NOLIST      ; turn off listing
+			      C .LIST        ; begin listing
+			      C 
+				.STACK 4096
+ 00000000			.DATA 
+				;Colors (ascii value of colors)
+ 00000000 62			Black BYTE 98     
+ 00000001 70			Purple BYTE 112 
+ 00000002 67			Green BYTE 103 
+ 00000003 74			Tan BYTE 116       
+ 00000004 72			Red BYTE 114 
+ 00000005 6F			Orange BYTE 111 
+ 00000006 77			White BYTE 119 
+ 00000007 79			Yellow BYTE 121 
+				;strings for I/O
+ 00000008  0000000B [		stdin BYTE 11 DUP (?), 0
+	    00
+	   ] 00
+ 00000014  0000000B [		stdout BYTE 11 DUP (?), 0
+	    00
+	   ] 00
+				;RNG Data
+ 00000020  00000004 [		random  DWORD   4 DUP (?)
+	    00000000
+	   ]
+				;input data
+ 00000030 45 6E 74 65 72	input_prompt BYTE    "Enter a four color guess. Choices: bpgtrowy", 0
+	   20 61 20 66 6F
+	   75 72 20 63 6F
+	   6C 6F 72 20 67
+	   75 65 73 73 2E
+	   20 43 68 6F 69
+	   63 65 73 3A 20
+	   62 70 67 74 72
+	   6F 77 79 00
+				;input_string BYTE 11 DUP (?)
+ 0000005C 59 6F 75 72 20	invalid_input_message    BYTE "Your input was invalid, please try again.", 0
+	   69 6E 70 75 74
+	   20 77 61 73 20
+	   69 6E 76 61 6C
+	   69 64 2C 20 70
+	   6C 65 61 73 65
+	   20 74 72 79 20
+	   61 67 61 69 6E
+	   2E 00
+				;invalid_input_message2 BYTE "Please use bpgtrowy"
+				;Game Logic
+ 00000086  00000005 [		answer  BYTE  5 DUP (?), 0
+	    00
+	   ] 00
+ 0000008C  00000005 [		guess   BYTE  5 DUP (?), 0
+	    00
+	   ] 00
+ 00000092 00000000		guesses DWORD   0               ;Number of Guesses
+ 00000096 00000000		blackflags DWORD   0
+ 0000009A 00000000		whiteflags  DWORD   0
+ 0000009E 00000000		count DWORD   0
+ 000000A2 00000000		count2 DWORD   0
+ 000000A6 00000015		maxguesses DWORD   21
+ 000000AA  00000005 [		stringcopy BYTE 5 DUP (?), 0                    ;duplicate of key for white flag check
+	    00
+	   ] 00
+ 000000B0 4E 75 6D 62 65	blackFlagsLbl BYTE    "Number of black flags:", 0
+	   72 20 6F 66 20
+	   62 6C 61 63 6B
+	   20 66 6C 61 67
+	   73 3A 00
+ 000000C7 4E 75 6D 62 65	whiteFlagsLbl BYTE    "Number of white flags:", 0
+	   72 20 6F 66 20
+	   77 68 69 74 65
+	   20 66 6C 61 67
+	   73 3A 00
+ 000000DE 59 6F 75 20 77	victoryLbl BYTE  "You won in this many guesses:", 0
+	   6F 6E 20 69 6E
+	   20 74 68 69 73
+	   20 6D 61 6E 79
+	   20 67 75 65 73
+	   73 65 73 3A 00
+ 000000FC 59 6F 75 20 75	defeatLbl BYTE  "You used 20 guesses and lost. The answer was ", 0
+	   73 65 64 20 32
+	   30 20 67 75 65
+	   73 73 65 73 20
+	   61 6E 64 20 6C
+	   6F 73 74 2E 20
+	   54 68 65 20 61
+	   6E 73 77 65 72
+	   20 77 61 73 20
+	   00
+ 0000012A  0000000B [		temp     BYTE    11 DUP (?), 0
+	    00
+	   ] 00
+				;ErrorMessage
+ 00000136 41 6E 20 45 72	errorLbl BYTE "An Error Occurred...", 0
+	   72 6F 72 20 4F
+	   63 63 75 72 72
+	   65 64 2E 2E 2E
+	   00
+ 0000014B 00			NULL BYTE 0
+ 00000000			.CODE
+				ERR_OUT MACRO;
+				    output NULL, errorLbl
+				    ENDM
+				;Random answer generation
+				;Credit: Geoff Huang, Gilbert Han
+				;   generate a random string of chars that represent 4 random colors
+				;   store answer in result
+				random_color_string MACRO result
+				    PUSHAD    ;Generate a random string of colors    ;random_number_generator rng_output    lea esi, random     ; load the address of the first array element in esi    mov ebx, 8          ; 8 is the divisor    mov ecx, 4          ; run the for loop 4 times (generate 4 random numbers between 0 and 5)    rng:    rdtsc               ; get the current timestamp and store in edx:eax
+				            mov edx, 0          ; prevent integer overflow            ; the following code performs (random# % 6)            div ebx         ; divide by 6 (remainder stored in edx)            mov [esi], edx      ; move the remainder into the random array            add esi, 4          ; point to the next element            loop    rng         ; go to the next iteration of the for loop
+				        ;Loop through random[4] and    ;Convert random numbers into ascii string of colors    ;store result in result[4]    mov ecx, 4          ; run the for loop 4 times (4 random numbers)    lea esi, random     ; load the address of the source (random[4])    lea edi, result     ; load the address of the destination (result[4])
+				        to_ascii:
+				    ;Compare random number in [esi] to 0-7 and convert to character in [edi] or result[4]    mov eax, [esi]    cmp eax, 0                  ;Check for Black        je got_Black
+				    mov eax, [esi]    cmp eax, 1                  ;Check for Purple    je got_Purple
+				    mov eax, [esi]    cmp eax, 2                  ;Check for Green    je got_Green
+				    mov eax, [esi]    cmp eax, 3                  ;Check for Tan          je got_Tan
+				    mov eax, [esi]    cmp eax, 4                  ;Check for Red    je got_Red
+				    mov eax, [esi]    cmp eax, 5                  ;Check for Orange    je got_Orange
+				    mov eax, [esi]    cmp eax, 6                  ;Check for White    je got_White
+				    mov eax, [esi]    cmp eax, 7                  ;Check for Yellow    je got_Yellow
+				    ;End of checks reached-- Error    ERR_OUT
+				    got_Black:
+				        mov al, Black        jmp end_Colors
+				    got_Purple:
+				        mov al, Purple        jmp end_Colors
+				    got_Green:
+				        mov al, Green        jmp end_Colors
+				    got_Tan:
+				        mov al, Tan        jmp end_Colors
+				    got_Red:
+				        mov al, Red        jmp end_Colors
+				    got_Orange:
+				        mov al, Orange        jmp end_Colors
+				    got_White:
+				        mov al, White        jmp end_Colors
+				    got_Yellow:
+				        mov al, Yellow        jmp end_Colors
+				    end_Colors:
+				    mov     [edi], al   ; store the random char in result[4]    ;output outputLbl, randomstring ; display the contents of the array element    ;store the ascii value into result    ;increment pointers    add esi, 4    add edi, 1    ;manually implement because jump distance is too far    ;loop   to_ascii                ; go to the next iteration of the for loop    dec ecx    cmp ecx, 0    jnz to_ascii
+				    POPAD    ENDM
+				;Getting input and checking for errors
+				;Credit: Joseph Dandro
+				;   get input from user
+				;   check to make sure that the input represents a color
+				get_input MACRO input_string
+				    PUSHAD    inputStart:                         ;Start the input loop, get input, check for valid input
+				        input input_prompt, input_string, 5     ;input_prompt followed by input_string (user input) with a total amount of input up to 4 characters + a null
+				        LEA ecx, input_string
+				        ;mov eax, 0                     ;Clear EAX so we can use it for comparisons, as we will use the AL part of EAX for char comparsions        mov ebx, 0                      ;clear EBX so we can use it to count, done so as we loop within the program, don't want to start count at a number greater than 0        inputValidStart:
+				            cmp ebx, 4                  ;we only want 4  characters            je inputEnd                 ;if we are at 4 characters checked, we can exit here
+				            mov al, [ecx]               ;Move the character from the input string into the lower end of EAX, 1 character            ;Check the input against each color            cmp al, Black            je inputIsValid
+				            cmp al, Purple            je inputIsValid
+				            cmp al, Green            je inputIsValid
+				            cmp al, Tan            je inputIsValid
+				            cmp al, Red            je inputIsValid
+				            cmp al, Orange            je inputIsValid
+				            cmp al, White            je inputIsValid
+				            cmp al, Yellow            je inputIsValid             ;Each comparsion is follwed by a je, we only need to check for the valid characters, anything else is invalid
+				            ;We will reach the chunk of code if and only if the character was not valid, else it would have jumped to inputValid            ;We will also reach here if the user input too little input            output invalid_input_message, input_string  ;Output a statment saying the input was invalid, and show the invalid input
+				            input input_prompt, input_string, 5     ;prompt for NEW input
+				            lea ecx, input_string               ;reload the string into the ECX. so we start fresh
+				            mov ebx, 0                      ;Reset our counter            jmp inputValidStart             ;jump to the start of validation
+				                    inputIsValid:
+				            inc ebx            add ecx, 1            jmp inputValidStart
+				        ;inputValidEnd    inputEnd:   ;end inputStuff
+				    POPAD    ENDM
+				;Main game logic
+				;Credit: Michael Morrison, Christopher Anderson, Matt Yoder
+				;   Continuously compare guesses from user with a randomly generated answer
+				;   Gives the user feedback in the form of white and black flags
+				;   Flags indicate number of fully correct guesses (black flags)
+				;   and partially correct guesses (color, but not position) (white flags)
+				main_loop MACRO
+				untilguesscorrect:
+				            mov ebx, 0            mov blackflags, ebx         ;resets flags            mov whiteflags, ebx         ;resets flags            mov eax, guesses            inc eax            mov guesses, eax            ;increment user guesses            cmp eax, maxguesses         ;if user guesses == 20 game over            je loser
+				    get_input guess
+				    othercheck:
+				                mov eax, 0                mov ecx, 0                mov ebx, 0                mov count, ebx      ;resets count                jmp blackflagcheck
+				    otc1:
+				                mov esi, 0          ;resets esi index for copying answer                mov eax, 0                mov ecx, 0                mov ebx, 0                mov count, ebx      ;resets count                mov count2, ebx     ;resets count    cpyloop:                        ;copies answer
+				                cmp count, 5                je whiteflagcheckpre
+				                mov al, answer[esi]                mov stringcopy[esi], al                inc esi                inc count                jmp cpyloop
+				    otc2:       
+				                mov eax, whiteflags                sub eax, blackflags                mov whiteflags, eax         ;subtracts black flags from white to yield correct value                jmp roundcomplete
+				    blackflagcheck:
+				                    mov al, answer[ebx]         ;key                    cmp guess[ecx], al        ;guess                    je addblackflag
+				    bfc1:
+				                    mov eax, count                    inc eax                    mov count, eax              ;increases count                                    inc ebx                     ;increment key index                    inc ecx                     ;increment guess index                    cmp count, 4                ;exit if count is 4                    je otc1
+				                    jmp blackflagcheck
+				            addblackflag:   mov eax, blackflags
+				                    inc eax                    mov blackflags, eax         ;blackflags + 1                    jmp bfc1
+				    whiteflagcheckpre:
+				                    mov count, 0    whiteflagcheck: 
+				                    mov al, stringcopy[ebx]         ;key COPY, to be editted upon successful result of flag check.                    cmp guess[ecx], al          ;guess                    je addwhiteflag
+				    wfc1:
+				                    mov eax, count                    inc eax                    mov count, eax              ;increases count for position in key                    inc ebx                    cmp count, 4                    je wfc2                     ; move to next position in guess
+				                    jmp whiteflagcheck          
+				    wfc2:
+				                    mov eax, count2                    inc eax                    mov count2, eax             ;increases count for position in guess, only if a flag is added or if the key is exhausted                    cmp count2, 4               ;check if all guesses have been made                    je otc2                     ;exit condition
+				                    inc ecx                     ;increases guess index +1                    mov ebx, 0                  ;resets key index                    mov count, ebx              ;resets count for key                    jmp whiteflagcheck
+				    addwhiteflag:   mov eax, whiteflags         
+				                    inc eax                    mov whiteflags, eax         ;whiteflags + 1                    mov al, 108                    mov stringcopy[ebx], al     ;overwrite current space in key copy with unused character "l" upon first succesful result of white flag, in case duplicates are found in both the key and the guess.                    jmp wfc2
+				    roundcomplete:  mov eax, blackflags
+				                    dtoa    temp, eax        ; convert to ASCII characters
+				                    output  blackFlagsLbl, temp  ; output label and sum
+				                    mov eax, whiteflags                    dtoa    temp, eax        ; convert to ASCII characters
+				                    output  whiteFlagsLbl, temp  ; output label and sum
+				                                    mov eax, 4                    cmp blackflags, eax                         je complete                 ;exits if black flags are 4
+				                    jmp untilguesscorrect
+				            complete:
+				                    mov eax, guesses                    dtoa    temp, eax
+				                    output  victoryLbl, temp  ; output label and sum
+				                    jmp progexit
+				    loser:
+				                    mov eax, maxguesses                    dtoa    temp, eax
+				                    output  defeatLbl, answer  ; output label and answer
+				                    jmp progexit
+				    progexit:
+				                mov     eax, 0  ; exit with return code 0            ret    ENDM
+				;Mastermind
+				;Rules:
+				;   The computer generates a random string of colors
+				;   the user wins when they guess the correct string
+				;   If the user guesses incorrect, then the user is informed of two things
+				;       1) The number of guesses where position and color are correct.
+				;       2) The number of guesses where only color is correct.
+				;   The user has a maximum of 20 guesses
+				_MainProc PROC
+				    random_color_string answer
+				    main_loop
+				_MainProc ENDP
+				END                             ; end of source code
+ 00000000
+ 000003B7
+Microsoft (R) Macro Assembler Version 12.00.21005.1	    12/05/16 22:15:52
+IOExample.asm						     Symbols 2 - 1
+
+
+
+
+Macros:
+
+                N a m e                 Type
+
+ERR_OUT  . . . . . . . . . . . .	Proc
+atod . . . . . . . . . . . . . .	Proc
+atow . . . . . . . . . . . . . .	Proc
+dtoa . . . . . . . . . . . . . .	Proc
+get_input  . . . . . . . . . . .	Proc
+input  . . . . . . . . . . . . .	Proc
+main_loop  . . . . . . . . . . .	Proc
+output . . . . . . . . . . . . .	Proc
+random_color_string  . . . . . .	Proc
+wtoa . . . . . . . . . . . . . .	Proc
+
+
+Segments and Groups:
+
+                N a m e                 Size     Length   Align   Combine Class
+
+FLAT . . . . . . . . . . . . . .	GROUP
+STACK  . . . . . . . . . . . . .	32 Bit	 00001000 Para	  Stack	  'STACK'	 
+_DATA  . . . . . . . . . . . . .	32 Bit	 0000014C Para	  Public  'DATA'	
+_TEXT  . . . . . . . . . . . . .	32 Bit	 000003B7 Para	  Public  'CODE'	
+
+
+Procedures, parameters, and locals:
+
+                N a m e                 Type     Value    Attr
+
+_MainProc  . . . . . . . . . . .	P Near	 00000000 _TEXT	Length= 000003B7 Public
+  rng  . . . . . . . . . . . . .	L Near	 00000011 _TEXT	
+  to_ascii . . . . . . . . . . .	L Near	 00000032 _TEXT	
+  got_Black  . . . . . . . . . .	L Near	 00000083 _TEXT	
+  got_Purple . . . . . . . . . .	L Near	 0000008A _TEXT	
+  got_Green  . . . . . . . . . .	L Near	 00000091 _TEXT	
+  got_Tan  . . . . . . . . . . .	L Near	 00000098 _TEXT	
+  got_Red  . . . . . . . . . . .	L Near	 0000009F _TEXT	
+  got_Orange . . . . . . . . . .	L Near	 000000A6 _TEXT	
+  got_White  . . . . . . . . . .	L Near	 000000AD _TEXT	
+  got_Yellow . . . . . . . . . .	L Near	 000000B4 _TEXT	
+  end_Colors . . . . . . . . . .	L Near	 000000BB _TEXT	
+  untilguesscorrect  . . . . . .	L Near	 000000CE _TEXT	
+  inputStart . . . . . . . . . .	L Near	 000000F7 _TEXT	
+  inputValidStart  . . . . . . .	L Near	 00000120 _TEXT	
+  inputIsValid . . . . . . . . .	L Near	 000001B2 _TEXT	
+  inputEnd . . . . . . . . . . .	L Near	 000001BB _TEXT	
+  othercheck . . . . . . . . . .	L Near	 000001BC _TEXT	
+  otc1 . . . . . . . . . . . . .	L Near	 000001D3 _TEXT	
+  cpyloop  . . . . . . . . . . .	L Near	 000001F3 _TEXT	
+  otc2 . . . . . . . . . . . . .	L Near	 00000211 _TEXT	
+  blackflagcheck . . . . . . . .	L Near	 00000226 _TEXT	
+  bfc1 . . . . . . . . . . . . .	L Near	 00000234 _TEXT	
+  addblackflag . . . . . . . . .	L Near	 0000024C _TEXT	
+  whiteflagcheckpre  . . . . . .	L Near	 00000259 _TEXT	
+  whiteflagcheck . . . . . . . .	L Near	 00000263 _TEXT	
+  wfc1 . . . . . . . . . . . . .	L Near	 00000271 _TEXT	
+  wfc2 . . . . . . . . . . . . .	L Near	 00000288 _TEXT	
+  addwhiteflag . . . . . . . . .	L Near	 000002AE _TEXT	
+  roundcomplete  . . . . . . . .	L Near	 000002C3 _TEXT	
+  complete . . . . . . . . . . .	L Near	 00000341 _TEXT	
+  loser  . . . . . . . . . . . .	L Near	 00000379 _TEXT	
+  progexit . . . . . . . . . . .	L Near	 000003B1 _TEXT	
+
+
+Symbols:
+
+                N a m e                 Type     Value    Attr
+
+@CodeSize  . . . . . . . . . . .	Number	 00000000h   
+@DataSize  . . . . . . . . . . .	Number	 00000000h   
+@Interface . . . . . . . . . . .	Number	 00000000h   
+@Model . . . . . . . . . . . . .	Number	 00000007h   
+@code  . . . . . . . . . . . . .	Text   	 _TEXT
+@data  . . . . . . . . . . . . .	Text   	 FLAT
+@fardata?  . . . . . . . . . . .	Text   	 FLAT
+@fardata . . . . . . . . . . . .	Text   	 FLAT
+@stack . . . . . . . . . . . . .	Text   	 FLAT
+Black  . . . . . . . . . . . . .	Byte	 00000000 _DATA	
+Green  . . . . . . . . . . . . .	Byte	 00000002 _DATA	
+NULL . . . . . . . . . . . . . .	Byte	 0000014B _DATA	
+Orange . . . . . . . . . . . . .	Byte	 00000005 _DATA	
+Purple . . . . . . . . . . . . .	Byte	 00000001 _DATA	
+Red  . . . . . . . . . . . . . .	Byte	 00000004 _DATA	
+Tan  . . . . . . . . . . . . . .	Byte	 00000003 _DATA	
+White  . . . . . . . . . . . . .	Byte	 00000006 _DATA	
+Yellow . . . . . . . . . . . . .	Byte	 00000007 _DATA	
+_getInput  . . . . . . . . . . .	L Near	 00000000 FLAT	External
+_showOutput  . . . . . . . . . .	L Near	 00000000 FLAT	External
+answer . . . . . . . . . . . . .	Byte	 00000086 _DATA	
+atodproc . . . . . . . . . . . .	L Near	 00000000 FLAT	External
+atowproc . . . . . . . . . . . .	L Near	 00000000 FLAT	External
+blackFlagsLbl  . . . . . . . . .	Byte	 000000B0 _DATA	
+blackflags . . . . . . . . . . .	DWord	 00000096 _DATA	
+count2 . . . . . . . . . . . . .	DWord	 000000A2 _DATA	
+count  . . . . . . . . . . . . .	DWord	 0000009E _DATA	
+defeatLbl  . . . . . . . . . . .	Byte	 000000FC _DATA	
+dtoaproc . . . . . . . . . . . .	L Near	 00000000 FLAT	External
+errorLbl . . . . . . . . . . . .	Byte	 00000136 _DATA	
+guesses  . . . . . . . . . . . .	DWord	 00000092 _DATA	
+guess  . . . . . . . . . . . . .	Byte	 0000008C _DATA	
+input_prompt . . . . . . . . . .	Byte	 00000030 _DATA	
+invalid_input_message  . . . . .	Byte	 0000005C _DATA	
+maxguesses . . . . . . . . . . .	DWord	 000000A6 _DATA	
+random . . . . . . . . . . . . .	DWord	 00000020 _DATA	
+stdin  . . . . . . . . . . . . .	Byte	 00000008 _DATA	
+stdout . . . . . . . . . . . . .	Byte	 00000014 _DATA	
+stringcopy . . . . . . . . . . .	Byte	 000000AA _DATA	
+temp . . . . . . . . . . . . . .	Byte	 0000012A _DATA	
+victoryLbl . . . . . . . . . . .	Byte	 000000DE _DATA	
+whiteFlagsLbl  . . . . . . . . .	Byte	 000000C7 _DATA	
+whiteflags . . . . . . . . . . .	DWord	 0000009A _DATA	
+wtoaproc . . . . . . . . . . . .	L Near	 00000000 FLAT	External
+
+	   0 Warnings
+	   0 Errors
